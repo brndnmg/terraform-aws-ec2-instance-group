@@ -97,6 +97,7 @@ resource "aws_instance" "default" {
   subnet_id                   = element(var.subnet_ids, count.index)
   monitoring                  = var.monitoring
   private_ip                  = concat(var.private_ips, [""])[min(length(var.private_ips), count.index)]
+  private_ip                  = length(var.private_ips) > 0 ? concat(var.private_ips, [""])[min(length(var.private_ips), count.index)] : null
   source_dest_check           = var.source_dest_check
   ipv6_address_count          = var.ipv6_address_count < 0 ? null : var.ipv6_address_count
   ipv6_addresses              = length(var.ipv6_addresses) > 0 ? var.ipv6_addresses : null
