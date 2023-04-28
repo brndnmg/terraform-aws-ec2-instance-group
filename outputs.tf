@@ -75,10 +75,10 @@ output "alarm_ids" {
 
 output "eni_to_eip_map" {
   description = "Map of ENI with EIP"
-  value = zipmap(
+  value = aws_eip.additional ?  zipmap(
     aws_network_interface.additional.*.id,
     aws_eip.additional.*.public_ip
-  )
+  ): ""
 }
 
 output "ebs_ids" {
