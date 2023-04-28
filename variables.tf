@@ -329,3 +329,10 @@ variable "ebs_volume_encrypted" {
   description = "Size of the EBS volume in gigabytes"
   default     = true
 }
+
+variable "enable_additional_eips" {
+  description = "Flag to enable or disable the creation of additional Elastic IPs."
+  type        = bool
+  default     = false
+}
+
