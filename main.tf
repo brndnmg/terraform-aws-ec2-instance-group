@@ -25,8 +25,6 @@ locals {
   dns_names = formatlist(
     "%v.${var.region == "us-east-1" ? "compute-1" : "${var.region}.compute"}.amazonaws.com", compact(local.ip_dns_list)
   )
-
-  ec2_instance_groups = {for k, ec2_instance_group in module.ec2_instance_group : k => ec2_instance_group.ids}
 }
 
 data "aws_region" "default" {
